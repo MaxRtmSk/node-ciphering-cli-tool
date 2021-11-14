@@ -1,11 +1,8 @@
 const fs = require('fs');
-// const { errors } = require('./error/errors');
+const path = require('path');
 
 async function validatePath(path) {
-    if (!fs.existsSync(path)) {
-      // errors(Error('Error: no such file or directory!'));
-        console.error('111111111111111111111 path file')
-    }   
+    if (!fs.existsSync(path)) throw new Error(`Error: no such ${path} or directory!`)
 }
 
 module.exports = validatePath;
