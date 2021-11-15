@@ -1,6 +1,7 @@
-const { createWriteStream } = require('fs')
+const { ReadStream } = require('./readable');
+const { WriteStream } = require('./wtitable');
 const validatePath = require('../validation/validationPath');
-const { Rot8Cipher, CaesarCipher } = require('./transform');
+const { Rot8Cipher, CaesarCipher, AtbashCipher } = require('./transform');
 
 
 async function createStreams(cipher_steps, input_path, output_path) {
@@ -12,28 +13,29 @@ async function createStreams(cipher_steps, input_path, output_path) {
     
     if (input_path) {
         await validatePath(input_path);
-        stream.read = createWriteStream(input_path);
+        readable = new ReadStream(input_path);
+        stream.read = readable;
     };
 
     if (output_path) {
         await validatePath(output_path);
-        stream.write = createWriteStream(output_path);
+        const writable = new WriteStream(output_path);
+        stream.write = writable;
     };
 
     cipher_steps.forEach(step => {
         switch (step[0]) {
             case 'C':
-                console.log('C')
                 const caesarCipher = new CaesarCipher(step[1]);
                 stream.transforms.push(caesarCipher);
                 break;
             case 'R':
-                console.log('R');
                 const rot8Cipher = new Rot8Cipher(step[1]);
                 stream.transforms.push(rot8Cipher);
                 break;
             case 'A':
-                console.log('A');
+                const atbashCipher = new AtbashCipher();
+                stream.transforms.push(atbashCipher); 
                 break;
             default:
                 break;
