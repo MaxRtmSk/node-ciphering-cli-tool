@@ -74,4 +74,4 @@ function atbash(text) {
     return encrypted;
 }
 
-module.exports = atbash;
+module.exports = {atbash, isLowerCase, isUpperCase};

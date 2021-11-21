@@ -1,6 +1,6 @@
 const { Transform } = require('stream');
 const { rot } = require('../ciphers/rot');
-const atbash = require('../ciphers/atbash');
+const { atbash } = require('../ciphers/atbash');
 
   class Rot8Cipher extends Transform {
     constructor(action) {
