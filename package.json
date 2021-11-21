@@ -1,0 +1,24 @@
+{
+  "name": "ciphering-cli-tool",
+  "version": "1.0.0",
+  "description": "This is a command line (CLI) application. It encodes/decodes text using:  * [Caesar cipher](https://en.wikipedia.org/wiki/Caesar_cipher).  * [Atbash cipher](https://en.wikipedia.org/wiki/Atbash) * [ROT-8 as variation of ROT-13](https://en.wikipedia.org/wiki/ROT13)",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "test:coverage": "jest --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ratomsky/node-ciphering-cli-tool.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ratomsky/node-ciphering-cli-tool/issues"
+  },
+  "homepage": "https://github.com/ratomsky/node-ciphering-cli-tool#readme",
+  "devDependencies": {
+    "jest": "^27.3.1"
+  }
+}
